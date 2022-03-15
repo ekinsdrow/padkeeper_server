@@ -6,7 +6,7 @@ import io.ktor.routing.*
 
 fun Route.registerUserRouting() {
     route("/user") {
-        get {
+        get("me") {
             call.respond("User Route")
         }
     }
