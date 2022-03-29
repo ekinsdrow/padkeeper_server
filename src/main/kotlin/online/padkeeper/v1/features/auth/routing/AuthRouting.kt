@@ -19,6 +19,7 @@ fun Route.registerAuthRouting(
     val authDatabaseClient = AuthDatabaseClient(database)
     val authRepository = AuthRepository(authDatabaseClient)
 
+
     route("/auth") {
         post("register") {
             //TODO: create user and add him to database with token

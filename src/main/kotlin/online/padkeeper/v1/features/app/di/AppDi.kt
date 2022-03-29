@@ -2,18 +2,14 @@ package online.padkeeper.v1.features.app.di
 
 import io.ktor.application.*
 import org.jetbrains.exposed.sql.Database
+import java.nio.file.Paths
 
 
 object AppDi {
     fun database(environment: ApplicationEnvironment): Database {
-        val url = environment.config.property("database.url").getString()
-        val user = environment.config.property("database.username").getString()
-        val pass = environment.config.property("database.password").getString()
+        val path = environment.config.property("database.path").getString()
 
-        return Database.connect(
-            url, driver = "org.postgresql.Driver",
-            user = user, password = pass
-        )
+        return Database.connect("jdbc:sqlite:$path", "org.sqlite.JDBC")
     }
 
     fun jwtSecret(environment: ApplicationEnvironment): String {
