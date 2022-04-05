@@ -8,6 +8,8 @@ import online.padkeeper.v1.features.auth.data.models.UserRegister
 import online.padkeeper.v1.features.auth.data.repositories.AuthRepository
 import online.padkeeper.v1.features.auth.data.sources.AuthDatabaseClient
 import online.padkeeper.v1.features.auth.domain.JWTService
+import online.padkeeper.v1.features.auth.domain.LoginController
+import online.padkeeper.v1.features.auth.domain.RegisterController
 import org.jetbrains.exposed.sql.Database
 
 fun Route.registerAuthRouting(
@@ -22,14 +24,13 @@ fun Route.registerAuthRouting(
 
     route("/auth") {
         post("register") {
-            //TODO: create user and add him to database with token
-            val user = call.receive<UserRegister>()
-            val token = jwtService.createToken(user)
-            call.respond(hashMapOf("access_token" to token))
+            val registerController = RegisterController(call, jwtService)
+            registerController.registerNewUser()
         }
 
         post("login") {
-            //TODO: get token and user from database
+            val loginController = LoginController(call)
+            loginController.login()
         }
     }
 }
