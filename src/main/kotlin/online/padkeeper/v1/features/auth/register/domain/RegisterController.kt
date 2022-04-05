@@ -1,4 +1,4 @@
-package online.padkeeper.v1.features.auth.domain
+package online.padkeeper.v1.features.auth.register.domain
 
 import io.ktor.application.*
 import io.ktor.http.*
@@ -7,7 +7,8 @@ import io.ktor.response.*
 import online.padkeeper.v1.common.utils.isValidEmail
 import online.padkeeper.v1.common.utils.isValidPassword
 import online.padkeeper.v1.common.utils.isValidUserName
-import online.padkeeper.v1.features.auth.data.models.UserRegister
+import online.padkeeper.v1.features.auth.domain.JWTService
+import online.padkeeper.v1.features.auth.register.data.models.UserRegister
 
 class RegisterController(private val call: ApplicationCall, private val jwtService: JWTService) {
     suspend fun registerNewUser() {

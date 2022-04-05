@@ -1,4 +1,4 @@
-package online.padkeeper.v1.features.auth.domain
+package online.padkeeper.v1.features.auth.login.domain
 
 import io.ktor.application.*
 

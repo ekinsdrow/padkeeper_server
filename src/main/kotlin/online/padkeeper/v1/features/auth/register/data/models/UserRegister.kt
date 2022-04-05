@@ -1,4 +1,4 @@
-package online.padkeeper.v1.features.auth.data.models
+package online.padkeeper.v1.features.auth.register.data.models
 import kotlinx.serialization.Serializable
 
 @Serializable
